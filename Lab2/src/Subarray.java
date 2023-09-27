@@ -4,7 +4,7 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 
-public class Solution {
+public class Subarray {
 
     public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
@@ -13,7 +13,6 @@ public class Solution {
 
         int n = scanner.nextInt();
         int[] array = new int[n];
-
 
         for (int i = 0; i < n; i++) {
             array[i] = scanner.nextInt();
