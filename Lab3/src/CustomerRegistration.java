@@ -76,9 +76,6 @@ public class CustomerRegistration {
         });
         buttonPanel.add(uploadButton);
 
-        //photo label
-        photoLabel = new JLabel();
-        buttonPanel.add(photoLabel);
 
         submitButton = new JButton("Submit");
         submitButton.addActionListener(new ActionListener() {
@@ -96,6 +93,11 @@ public class CustomerRegistration {
             }
         });
         buttonPanel.add(submitButton);
+
+        //photo label
+        photoLabel = new JLabel();
+        buttonPanel.add(photoLabel);
+
         mainPanel.add(buttonPanel);
         mainPanel.add(Box.createVerticalStrut(50));
 
