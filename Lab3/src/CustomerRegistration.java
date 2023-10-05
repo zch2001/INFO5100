@@ -15,7 +15,7 @@ public class CustomerRegistration {
     private ImageIcon photo;
 
     public CustomerRegistration() {
-        frame = new JFrame("Customer Registration");
+        frame = new JFrame("Customer Form");
         //cant work
         //mainPanel = new JPanel(new GridLayout(6, 2));
 
@@ -76,6 +76,7 @@ public class CustomerRegistration {
         });
         buttonPanel.add(uploadButton);
 
+        //photo label
         photoLabel = new JLabel();
         buttonPanel.add(photoLabel);
 
@@ -83,7 +84,7 @@ public class CustomerRegistration {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (true) {
+                if (isValidInput()&&isValidInput1()&&isValidEmail(emailField.getText())) {
                     JOptionPane.showMessageDialog(frame, "Details:\n" +
                                     "First Name: " + firstNameField.getText() + "\n" +
                                     "Last Name: " + lastNameField.getText() + "\n" +
@@ -106,15 +107,49 @@ public class CustomerRegistration {
 
 
 
-
-
-
-
-
-
     }
 
+    private boolean isValidInput() {
+        if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || ageField.getText().isEmpty() || emailField.getText().isEmpty() || messageArea.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(frame, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        // Add more validations as needed
+        return true;
+    }
 
+    private boolean isValidInput1() {
+        if (!firstNameField.getText().matches("[a-zA-Z\u4e00-\u9fa5]+")) {
+            JOptionPane.showMessageDialog(frame, "First Name should contain only letters or Chinese characters!");
+            return false;
+        }
+
+        if (!lastNameField.getText().matches("[a-zA-Z\u4e00-\u9fa5]+")) {
+            JOptionPane.showMessageDialog(frame, "Last Name should contain only letters or Chinese characters!");
+            return false;
+        }
+
+        try {
+            Integer.parseInt(ageField.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(frame, "Age should be a valid integer!");
+            return false;
+        }
+
+        if (!isValidEmail(emailField.getText())) {
+            JOptionPane.showMessageDialog(frame, "Email is not valid!");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isValidEmail(String email) {
+        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 
     public static void main(String[] args) {
         new CustomerRegistration();
