@@ -13,6 +13,10 @@ public class CustomerRegistration {
     private JButton submitButton, uploadButton;
     private JLabel photoLabel;
     private ImageIcon photo;
+    private JRadioButton maleRadioButton;
+    private JRadioButton femaleRadioButton;
+    private ButtonGroup genderGroup;
+
 
     public CustomerRegistration() {
         frame = new JFrame("Customer Form");
@@ -38,6 +42,19 @@ public class CustomerRegistration {
         lastNameField = new JTextField(20);
         lastNamePanel.add(lastNameField);
         mainPanel.add(lastNamePanel);
+
+        //gender
+        maleRadioButton = new JRadioButton("Male");
+        femaleRadioButton = new JRadioButton("Female");
+        genderGroup = new ButtonGroup();
+        genderGroup.add(maleRadioButton);
+        genderGroup.add(femaleRadioButton);
+
+        JPanel genderPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        genderPanel.add(new JLabel("Gender:"));
+        genderPanel.add(maleRadioButton);
+        genderPanel.add(femaleRadioButton);
+        mainPanel.add(genderPanel);
 
         // Age
         JPanel agePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -81,10 +98,12 @@ public class CustomerRegistration {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String gender = maleRadioButton.isSelected() ? "Male" : (femaleRadioButton.isSelected() ? "Female" : "Not specified");
                 if (isValidInput()&&isValidInput1()&&isValidEmail(emailField.getText())) {
                     JOptionPane.showMessageDialog(frame, "Details:\n" +
                                     "First Name: " + firstNameField.getText() + "\n" +
                                     "Last Name: " + lastNameField.getText() + "\n" +
+                                    "gender:" + gender + "\n" +
                                     "Age: " + ageField.getText() + "\n" +
                                     "Email: " + emailField.getText() + "\n" +
                                     "Message: " + messageArea.getText(),
