@@ -16,10 +16,14 @@ public class CustomerRegistration {
 
     public CustomerRegistration() {
         frame = new JFrame("Customer Registration");
-        mainPanel = new JPanel(new GridLayout(6, 2));
-        //change height and weight
-        //mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        //cant work
+        //mainPanel = new JPanel(new GridLayout(6, 2));
 
+        //change height and weight
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+
+        mainPanel.add(Box.createVerticalStrut(50));
 
         // First Name
         JPanel firstNamePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -72,6 +76,9 @@ public class CustomerRegistration {
         });
         buttonPanel.add(uploadButton);
 
+        photoLabel = new JLabel();
+        buttonPanel.add(photoLabel);
+
         submitButton = new JButton("Submit");
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -89,6 +96,7 @@ public class CustomerRegistration {
         });
         buttonPanel.add(submitButton);
         mainPanel.add(buttonPanel);
+        mainPanel.add(Box.createVerticalStrut(50));
 
         // Add the mainPanel to the frame
         frame.add(mainPanel);
@@ -96,9 +104,6 @@ public class CustomerRegistration {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-
-
-        photoLabel = new JLabel();
 
 
 
