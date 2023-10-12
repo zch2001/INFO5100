@@ -18,6 +18,7 @@ public class CustomerRegistration {
     private ButtonGroup genderGroup;
 
 
+
     public CustomerRegistration() {
         frame = new JFrame("Customer Form");
         //cant work
@@ -131,7 +132,7 @@ public class CustomerRegistration {
     }
 
     private boolean isValidInput() {
-        if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || ageField.getText().isEmpty() || emailField.getText().isEmpty() || messageArea.getText().isEmpty()) {
+        if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || ageField.getText().isEmpty() || emailField.getText().isEmpty() || messageArea.getText().isEmpty() || (!maleRadioButton.isSelected()&!femaleRadioButton.isSelected())) {
             JOptionPane.showMessageDialog(frame, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
@@ -171,6 +172,7 @@ public class CustomerRegistration {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
 
     public static void main(String[] args) {
         new CustomerRegistration();
