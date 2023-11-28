@@ -7,6 +7,8 @@ public class User {
     private int id;        // Assuming there is an 'id' field in your database table
     private String name;   // Corresponds to the 'NAME' column in database
     private int age;       // Corresponds to the 'AGE' column in database
+    private  String FirstName;
+    private  String LastName;
 
     // Constructors
     public User() {
